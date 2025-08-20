@@ -137,27 +137,109 @@ ul li a:hover {
   /*ภาพผู้บริหาร*/
 .image-right-box {
   float: right;              /* ให้กล่องไปอยู่ด้านขวา */
-  width: 250px;              /* ขนาดกล่องรูปภาพ */
+  width: 120px;   /* กำหนดความกว้าง */
+  height: auto;  /* รักษาสัดส่วน */
   margin-top: 20px; /* top right bottom left */
   margin-right: 30px;
   text-align: center;
 }
 
 .image-right-box img {
-  width: 100%;               /* ให้ภาพเต็มกล่อง */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin-bottom: 8px;
+  max-width: 100%; /* รูปจะไม่เกินขนาดกล่อง */
+  height: auto;    /* รักษาสัดส่วน */
+  border-radius: 0; /* มุมตรง */
 }
 
 .image-right-box .caption { /* ตัวหนังสือใต้ภาพ */
+display: inline-block;
+  width: 150px;   /* กำหนดให้กว้างกว่าภาพ */
+  text-align: center;
   font-size: 14px;
   color: #333;
-  line-height: 1.5;
 }
 
+/* ปรับสำหรับหน้าจอขนาดเล็ก (มือถือ) ภาพผู้บริหาร */
+@media (max-width: 768px) {
+  .image-right-box {
+    float: none;           /* ยกเลิกการลอยขวา */
+    margin: 20px auto;     /* จัดให้อยู่กึ่งกลาง */
+    width: 60%;            /* ให้กว้างขึ้น */
+  }
 
+  .image-right-box img {
+    width: 100%;           /* ใช้เต็มกล่อง */
+    height: auto;
+  }
+}
 
+/* onepage */
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  background: #fdfdfd;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.news-container {
+ display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.news-item {
+  max-width: 300px;
+  text-align: center;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.news-item img {      /* onepage Zoomเมื่อเม้าส์ชี้ */
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.news-item img:hover {
+  transform: scale(1.03);
+}
+
+/* Lightbox style */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-content {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
 
 
